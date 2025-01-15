@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->foreignId('gym_id')->constrained('users_gym')->onDelete('cascade');
+            $table->foreignId('gym_id')->constrained('users')->onDelete('cascade');
             $table->string('image_path')->nullable();
             $table->string('video_path')->nullable();
             $table->integer('duration')->nullable(); // Durasi dalam menit
