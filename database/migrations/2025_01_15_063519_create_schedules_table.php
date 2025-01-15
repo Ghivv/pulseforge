@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('workout_id')->constrained('workouts')->onDelete('cascade');
+            $table->dateTime('scheduled_at'); // Waktu yang dipilih pengguna
+            $table->text('note')->nullable(); // Catatan tambahan (opsional)
             $table->timestamps();
         });
     }

@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('workouts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->foreignId('gym_id')->constrained('users_gym')->onDelete('cascade');
+            $table->string('image_path')->nullable();
+            $table->string('video_path')->nullable();
+            $table->integer('duration')->nullable(); // Durasi dalam menit
+            $table->enum('difficulty', ['beginner', 'intermediate', 'advanced'])->default('beginner');
             $table->timestamps();
+            $table->softDeletes(); // Soft delete
+            $table->index('name'); // Indeks untuk pencarian
+            $table->index('gym_id'); // Indeks untuk relasi
         });
     }
 
