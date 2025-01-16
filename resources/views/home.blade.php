@@ -2,5 +2,5 @@
     <!-- Hero Section -->
     @include('components.hero')
 
-    
+
 </x-app-layout>

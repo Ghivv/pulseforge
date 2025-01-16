@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
 {
@@ -16,7 +17,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         // Cek apakah user sudah login dan memiliki role admin
-        if (!auth()->guard()->check() || !auth()->guard()->user()->is_admin) {
+        if (!Auth::check() || !Auth::user()->is_admin) {
             abort(403, 'Akses ditolak. Anda tidak memiliki hak akses admin.');
         }
 
