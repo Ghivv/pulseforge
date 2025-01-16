@@ -31,8 +31,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
 //  * Routes for Users - Article Listing and Details
 //  */
 Route::prefix('articles')->group(function () {
-    Route::get('/', [UserArticleController::class, 'index'])->name('articles.index');
-    Route::get('/{id}', [UserArticleController::class, 'show'])->name('articles.show');
+    Route::get('/articles', [UserArticleController::class, 'index'])->name('articles.index');
+    Route::get('/articles/{id}', [UserArticleController::class, 'show'])->name('articles.show');
 });
 
 

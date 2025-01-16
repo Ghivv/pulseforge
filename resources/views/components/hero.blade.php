@@ -11,49 +11,68 @@
                         Bentuk Diri Anda
                     </span>
                 </h1>
-
-                <!-- Avatar Testimonials -->
-                <div class="mt-8 flex items-center space-x-2">
-                    <div class="flex -space-x-2">
-                        <img src="/api/placeholder/40/40" alt="Member 1" class="inline-block h-10 w-10 rounded-full ring-2 ring-white">
-                        <img src="/api/placeholder/40/40" alt="Member 2" class="inline-block h-10 w-10 rounded-full ring-2 ring-white">
-                        <img src="/api/placeholder/40/40" alt="Member 3" class="inline-block h-10 w-10 rounded-full ring-2 ring-white">
-                    </div>
-                    <span class="text-sm text-gray-300">Bergabung dengan 1000+ member aktif</span>
-                </div>
-
-                <!-- CTA Buttons -->
-                <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
-                    <div class="rounded-md shadow">
-                        <a href="{{ route('register') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-cyan-400 hover:bg-cyan-500 md:py-4 md:text-lg md:px-10">
-                            Mulai Gratis
-                        </a>
-                    </div>
-                    <div class="mt-3 sm:mt-0 sm:ml-3">
-                        <a href="#features" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-cyan-400 bg-black hover:bg-gray-900 border-cyan-400 md:py-4 md:text-lg md:px-10">
-                            Pelajari Lebih Lanjut
-                        </a>
-                    </div>
-                </div>
             </div>
 
-            <!-- Hero Image -->
-            <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                    <div class="relative block w-full bg-gray-900 rounded-lg overflow-hidden">
-                        <img src="/api/placeholder/600/400" alt="Workout Preview" class="w-full">
-                        <div class="absolute inset-0 w-full h-full flex items-center justify-center">
-                            <button type="button" class="flex items-center justify-center h-16 w-16 rounded-full bg-cyan-400 hover:bg-cyan-500">
-                                <!-- Play Icon -->
-                                <svg class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
-                        </div>
+            <!-- Carousel Section -->
+            <div class="lg:col-span-6 relative">
+                <div class="carousel-container overflow-hidden relative">
+                    <!-- Slides -->
+                    <div class="carousel-slides flex transition-transform duration-700 ease-in-out">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 1" class="w-full h-auto">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 2" class="w-full h-auto">
+                        <img src="https://images.unsplash.com/photo-1519505907962-0a6cb0167c73?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 3" class="w-full h-auto">
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <button class="prev-button absolute top-1/2 left-4 transform -translate-y-1/2 bg-cyan-500 hover:bg-cyan-600 text-white p-2 rounded-full">&#10094;</button>
+                    <button class="next-button absolute top-1/2 right-4 transform -translate-y-1/2 bg-cyan-500 hover:bg-cyan-600 text-white p-2 rounded-full">&#10095;</button>
+
+                    <!-- Pagination Dots -->
+                    <div class="dots-container flex justify-center mt-4 space-x-2">
+                        <span class="dot w-3 h-3 bg-cyan-500 rounded-full"></span>
+                        <span class="dot w-3 h-3 bg-gray-400 rounded-full"></span>
+                        <span class="dot w-3 h-3 bg-gray-400 rounded-full"></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    const slides = document.querySelector('.carousel-slides');
+    const dots = document.querySelectorAll('.dot');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+        slides.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => {
+            dot.style.backgroundColor = i === index ? '#06b6d4' : '#666';
+        });
+    }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : dots.length - 1;
+        updateCarousel(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex < dots.length - 1) ? currentIndex + 1 : 0;
+        updateCarousel(currentIndex);
+    });
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateCarousel(currentIndex);
+        });
+    });
+
+    // Autoplay
+    setInterval(() => {
+        currentIndex = (currentIndex < dots.length - 1) ? currentIndex + 1 : 0;
+        updateCarousel(currentIndex);
+    }, 5000);
+</script>

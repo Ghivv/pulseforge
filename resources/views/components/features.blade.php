@@ -16,7 +16,7 @@
             <div class="bg-orange-500 rounded-lg p-8 transform transition duration-500 hover:scale-105">
                 <h3 class="text-xl font-bold text-black mb-4">Artikel Terbaru</h3>
                 <p class="text-black/80 mb-6">Tips dan panduan kebugaran terbaru dari para ahli</p>
-                <a href="{{ route('articles.index') }}" class="inline-flex items-center text-black font-semibold">
+                <a href="{{ route('admin.articles.index') }}" class="inline-flex items-center text-black font-semibold">
                     Lihat Artikel
                     <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

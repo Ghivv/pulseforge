@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -14,7 +15,6 @@ class ArticleController extends Controller
      */
     public function index()
     {
-
         $articles = Article::all(); // Mengambil semua data artikel
         return view('admin.articles.index', compact('articles'));
     }
@@ -30,7 +30,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request,)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -41,13 +41,13 @@ class ArticleController extends Controller
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('articles', 'public');
-
-            $validated['author_id'] = auth()->id(); // Mengambil id pengguna yang login
-s
-            Article::create($validated);
-
-            return redirect()->route('admin.articles.index')->with('success', 'Artikel berhasil dibuat!');
         }
+
+        $validated['author_id'] = Auth::id(); // Mengambil id pengguna yang login
+
+        Article::create($validated);
+
+        return redirect()->route('admin.articles.index')->with('success', 'Artikel berhasil dibuat!');
     }
 
     /**
@@ -55,7 +55,8 @@ s
      */
     public function show(string $id)
     {
-       // return view('admin.articles.show', c );
+        $article = Article::findOrFail($id);
+        return view('admin.articles.show', compact('article'));
     }
 
     /**
@@ -63,6 +64,7 @@ s
      */
     public function edit(string $id)
     {
+        $article = Article::findOrFail($id);
         return view('admin.articles.edit', compact('article'));
     }
 
@@ -71,6 +73,8 @@ s
      */
     public function update(Request $request, string $id)
     {
+        $article = Article::findOrFail($id);
+
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
@@ -96,6 +100,8 @@ s
      */
     public function destroy(string $id)
     {
+        $article = Article::findOrFail($id);
+
         if ($article->image) {
             Storage::disk('public')->delete($article->image);
         }

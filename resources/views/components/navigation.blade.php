@@ -13,9 +13,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:ml-10 sm:flex">
-                    <a href="{{ route('articles') }}" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium">Artikel</a>
-                    <a href="{{ route('workouts') }}" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium">Latihan</a>
-                    <a href="{{ route('forum') }}" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium">Forum</a>
+                    <a href="{{ route('admin.articles.index') }}" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium">Artikel</a>
+                    {{-- <a href="{{ route('workouts') }}" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium">Latihan</a>
+                    <a href="{{ route('forum') }}" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium">Forum</a> --}}
                 </div>
             </div>
 
