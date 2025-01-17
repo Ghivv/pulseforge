@@ -11,14 +11,14 @@ class ArticleController extends Controller
     // Menampilkan semua artikel
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::paginate(10);
         return view('articles.index', compact('articles'));
     }
 
     // Menampilkan formulir untuk membuat artikel baru
     public function create()
     {
-        return view('articles.create');
+        // return view('articles.create');
     }
 
     // Menyimpan artikel baru

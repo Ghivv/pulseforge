@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
@@ -20,7 +21,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
             'category' => 'General',
-            'author_id' => 1, // Pastikan ID pengguna ini ada
+            'author_id' => User::inRandomOrder()->first()->id ?? User::factory()->create()->id,
             'image' => null,
         ];
     }

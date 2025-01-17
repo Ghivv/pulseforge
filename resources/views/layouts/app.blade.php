@@ -19,7 +19,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="font-inter antialiased bg-black text-gray-100">
+<body class="relative min-h-screen bg-gradient-to-br via-gray-900 to-black from-black">
     <div class="min-h-screen">
         <!-- Navigation -->
         @include('components.navigation')

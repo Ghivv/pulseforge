@@ -17,12 +17,12 @@
         }
 
         .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+            animation: fadeIn 1s ease-out forwards;
         }
     </style>
 </head>
 
-<body class="bg-black">
+<body class="bg-transparent">
     <section class="relative min-h-screen bg-gradient-to-br via-gray-900 to-black overflow-hidden from-black">
         <!-- Background Overlay Pattern -->
         <div
