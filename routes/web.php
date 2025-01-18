@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\ArticleController as UserArticleController;
-
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
     return view('home');
@@ -35,5 +35,11 @@ Route::prefix('articles')->group(function () {
     Route::get('/articles/{id}', [UserArticleController::class, 'show'])->name('articles.show');
 });
 
+// Routes Comment
+Route::prefix('articles/{article}')->group(function () {
+    Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::put('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

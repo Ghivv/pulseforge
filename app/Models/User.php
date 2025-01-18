@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_admin', // Menambahkan atribut is_admin
     ];
 
     /**
@@ -47,8 +46,5 @@ class User extends Authenticatable
         ];
     }
 
-    public function isAdmin()
-    {
-        return $this->is_admin === true;
-    }
+    
 }
